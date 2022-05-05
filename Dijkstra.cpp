@@ -12,7 +12,7 @@ int main(){
     cin >> v_start >> v_end;
     v_start--;
     v_end--;
-    cout<<"\nEnter Adjacency Matrix: ";
+    cout<<"\nEnter Adjacency Matrix: \n";
     vector<vector<int>> g (n, vector<int>(n)); //Створюємо матрицю суміжності
     for(int i = 0; i < n; i++){
         for (int j = 0; j < n; j++){
