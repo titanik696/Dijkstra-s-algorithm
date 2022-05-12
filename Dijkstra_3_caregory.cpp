@@ -3,7 +3,7 @@ using namespace std;
 
 const int Inf = 1000000;
 
-void Dijkstra(int option, int n, vector<vector<pair<int, double>>> g, int v_start, int v_end, double ras_gas, double gas_cost){
+void Dijkstra(int option, int n, vector<vector<pair<int, double>>> g, int v_start, int v_end, double ras_gas, double gas_cost, double car_speed){
     vector <double> d(n);
     vector <int> p(n);
     d.assign(d.size(), Inf);
@@ -32,11 +32,11 @@ void Dijkstra(int option, int n, vector<vector<pair<int, double>>> g, int v_star
         cout<<endl<<"False. Way from the vertex "<<v_start+1<<" to the vertex "<<v_end+1<<" does not exist!\n";
     }
     else{
-        cout<<endl<<"Way from the vertex "<<v_start+1<<" to the vertex "<<v_end+1<<" equals: "<<d[v_end];
-        if(option==1) cout<<" kilometrs.";
-        if(option==2) cout<<" hours.";
-        if(option==3) cout<<" hryvnias.";
-        if(option==4) cout<<" komfortable.";
+        cout<<endl<<"Way from the vertex "<<v_start+1<<" to the vertex "<<v_end+1<<" equals: ";
+        if(option==1) cout<<d[v_end]<<" kilometrs.";
+        if(option==2) cout<<d[v_end]/car_speed<<" hours.";
+        if(option==3) cout<<d[v_end]<<" hryvnias.";
+        if(option==4) cout<<d[v_end]<<" komfortable.";
         cout<<"\nWay from the vertex "<<v_start+1<<" to the vertex "<<v_end+1<<": ";
         vector<int> path;
         for (int v=v_end; v!=v_start; v=p[v]){
@@ -66,11 +66,13 @@ int main(){
         }
         g.push_back(g_halp);
     }
-    double ras_gas,  gas_cost;
+    double ras_gas,  gas_cost, car_speed;
     cout<<"\nEnter the average fuel consumption of your car per kilometer: ";
     cin>>ras_gas;
     cout<<"\nEnter the price of 1 liter of gasoline: ";
     cin>>gas_cost;
+    cout<<"\nEnter the average speed of your car: ";
+    cin>>car_speed;
     int option=1;
     while(option!=0){
         
@@ -85,7 +87,7 @@ int main(){
                 cin >> v_start >> v_end;
                 v_start--;
                 v_end--;
-                Dijkstra(option, n, g, v_start, v_end, ras_gas, gas_cost);
+                Dijkstra(option, n, g, v_start, v_end, ras_gas, gas_cost, car_speed);
                 continue;
             case 0:
                 cout<<"Goodbye!"; 
