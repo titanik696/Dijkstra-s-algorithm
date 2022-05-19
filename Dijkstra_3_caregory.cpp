@@ -36,7 +36,6 @@ void Dijkstra(int option, int n, vector<vector<pair<int, double>>> g, int v_star
         if(option==1) cout<<d[v_end]<<" kilometrs.";
         if(option==2) cout<<d[v_end]/car_speed<<" hours.";
         if(option==3) cout<<d[v_end]<<" hryvnias.";
-        if(option==4) cout<<d[v_end]<<" komfortable.";
         cout<<"\nWay from the vertex "<<v_start+1<<" to the vertex "<<v_end+1<<": ";
         vector<int> path;
         for (int v=v_end; v!=v_start; v=p[v]){
